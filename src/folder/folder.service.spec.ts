@@ -39,6 +39,7 @@ const mockUpdateFolderDto: UpdateFolderDto = {
 
 describe('Item Service', () => {
 	let folderService: FolderService;
+	let itemService: ItemService;
 	let model: Model<Folder>;
 
 	beforeAll(async () => {
@@ -52,14 +53,12 @@ describe('Item Service', () => {
 						findById: jest.fn(),
 						findByIdAndUpdate: jest.fn(),
 						findByIdAndDelete: jest.fn(),
+						exec: jest.fn(),
 					},
 				},
 				{
 					provide: ItemService,
 					useValue: {
-						createItem: jest.fn(),
-						getItemById: jest.fn(),
-						updateItemById: jest.fn(),
 						deleteItemById: jest.fn(),
 					},
 				},
@@ -67,6 +66,7 @@ describe('Item Service', () => {
 		}).compile();
 
 		folderService = module.get<FolderService>(FolderService);
+		itemService = module.get<ItemService>(ItemService);
 		model = module.get<Model<Folder>>(getModelToken('Folder'));
 	});
 
@@ -105,7 +105,6 @@ describe('Item Service', () => {
 		});
 	});
 	describe('Update Item', () => {
-		//FIXME somehow this doesnt work
 		it('it should be equal', async () => {
 			jest.spyOn(model, 'findByIdAndUpdate').mockReturnValue({
 				exec: jest.fn().mockResolvedValueOnce(mockUpdatedFolder),
@@ -114,6 +113,7 @@ describe('Item Service', () => {
 				'A-01',
 				mockUpdateFolderDto
 			);
+			console.log(folderUpdated);
 			expect(folderUpdated).toEqual(mockUpdatedFolder);
 		});
 		it('it should be called with expected params', async () => {
@@ -122,14 +122,18 @@ describe('Item Service', () => {
 			expect(mockFunction).toBeCalledWith('A-01', mockUpdateFolderDto);
 		});
 	});
-	//describe('Delete Item', () => {
-	//	it('it should be called with expected params', async () => {
-	//		jest.spyOn(model, 'findByIdAndDelete').mockReturnValue({
-	//			exec: jest.fn().mockResolvedValueOnce(mockFolder),
-	//		} as any);
-	//		const mockFunction = jest.spyOn(folderService, 'deleteFolderById');
-	//		folderService.deleteFolderById('A-01');
-	//		expect(mockFunction).toBeCalledWith('A-01');
-	//	});
-	//});
+
+	//FIXME this seems not right
+	describe('Delete Item', () => {
+		it('it should be called with expected params', async () => {
+			jest.spyOn(folderService, 'getFolderById').mockResolvedValue(mockFolder);
+			const mockFunction = jest
+				.spyOn(folderService, 'deleteFolderById')
+				.mockReturnValue({
+					exec: jest.fn().mockResolvedValueOnce(null),
+				} as any);
+			folderService.deleteFolderById('A-01');
+			expect(mockFunction).toBeCalledWith('A-01');
+		});
+	});
 });

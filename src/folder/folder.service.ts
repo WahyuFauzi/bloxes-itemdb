@@ -34,12 +34,14 @@ export class FolderService {
 		folderId: string,
 		updateFolderDto: UpdateFolderDto
 	): Promise<Folder> {
-		return this.folderModel.findByIdAndUpdate(folderId, {
-			folderName: updateFolderDto.folderName,
-			nestedFolders: updateFolderDto.nestedFolders,
-			items: updateFolderDto.items,
-			updatedAt: Date.now().toString(),
-		});
+		return this.folderModel
+			.findByIdAndUpdate(folderId, {
+				folderName: updateFolderDto.folderName,
+				nestedFolders: updateFolderDto.nestedFolders,
+				items: updateFolderDto.items,
+				updatedAt: Date.now().toString(),
+			})
+			.exec();
 	}
 
 	async deleteFolderById(folderId: string): Promise<void> {

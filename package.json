@@ -71,7 +71,8 @@
 		"coverageDirectory": "../coverage",
 		"testEnvironment": "node",
 		"modulePathIgnorePatterns": [
-			"src/item"
+			"src/item",
+			"src/folder/folder.controller.spec.ts"
 		]
 	}
 }
