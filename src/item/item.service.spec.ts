@@ -9,9 +9,7 @@ import { UpdateItemDto } from './dto/update-item.dto';
 const mockItem: Item = {
 	_id: 'A-01',
 	itemName: 'Joseph',
-	itemType: 'Anggora',
 	itemTotalSize: 9,
-	itemChunks: 9,
 	createdAt: '26/06/2022',
 	updatedAt: '26/06/2022',
 };
@@ -19,9 +17,7 @@ const mockItem: Item = {
 const mockUpdatedItem: Item = {
 	_id: 'A-01',
 	itemName: 'Jotaro',
-	itemType: 'Anggora',
 	itemTotalSize: 9,
-	itemChunks: 9,
 	createdAt: '27/06/2022',
 	updatedAt: '27/06/2022',
 };

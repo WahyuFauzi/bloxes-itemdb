@@ -8,9 +8,7 @@ import { Item } from './schemas/item.schema';
 const mockItem: Item = {
 	_id: 'A-01',
 	itemName: 'Joseph',
-	itemType: 'Anggora',
 	itemTotalSize: 9,
-	itemChunks: 9,
 	createdAt: '26/06/2022',
 	updatedAt: '26/06/2022',
 };
@@ -18,24 +16,19 @@ const mockItem: Item = {
 const mockUpdatedItem: Item = {
 	_id: 'A-01',
 	itemName: 'Jotaro',
-	itemType: 'Anggora',
 	itemTotalSize: 9,
-	itemChunks: 9,
 	createdAt: '27/06/2022',
 	updatedAt: '27/06/2022',
 };
 
 const mockCreateItemDto: CreateItemDto = {
 	itemName: 'Joseph',
-	itemType: 'Anggora',
 	itemTotalSize: 9,
-	itemChunks: 9,
 };
 
 const mockUpdateItemDto: UpdateItemDto = {
 	itemName: 'Joseph',
 	itemTotalSize: 9,
-	itemChunks: 9,
 };
 
 describe('Item Service', () => {

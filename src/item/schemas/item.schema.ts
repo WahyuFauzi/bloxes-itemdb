@@ -12,13 +12,7 @@ export class Item {
 	itemName: string;
 
 	@Prop({ required: true })
-	itemType: string;
-
-	@Prop({ required: true })
 	itemTotalSize: number;
-
-	@Prop({ required: true })
-	itemChunks: number;
 
 	@Prop({ required: true })
 	createdAt: string;
