@@ -1,4 +1,4 @@
 export class UpdateItemDto {
-	itemName: string;
-	itemTotalSize: number;
+	item_name: string;
+	item_total_size: number;
 }

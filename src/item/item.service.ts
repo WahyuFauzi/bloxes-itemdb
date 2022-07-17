@@ -6,20 +6,22 @@ import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 import { Item, ItemDocument } from './schemas/item.schema';
 
+//TODO repair updated at and created at with standarized date (ISO)
 @Injectable()
 export class ItemService {
 	constructor(
-		@InjectModel(Item.name) private readonly itemModel: Model<ItemDocument>
+		@InjectModel(Item.name)
+		private readonly itemModel: Model<ItemDocument>
 	) {}
 
 	//somehow it return backwards from updatedAt to _id
 	async createItem(createItemDto: CreateItemDto): Promise<Item> {
 		return await this.itemModel.create({
 			_id: nanoid(),
-			itemName: createItemDto.itemName,
-			itemTotalSize: createItemDto.itemTotalSize,
-			createdAt: Date.now().toString(),
-			updatedAt: Date.now().toString(),
+			item_name: createItemDto.item_name,
+			item_total_size: createItemDto.item_total_size,
+			created_at: Date.now().toString(),
+			updated_at: Date.now().toString(),
 		});
 	}
 
@@ -31,13 +33,17 @@ export class ItemService {
 		itemId: string,
 		updateItemDto: UpdateItemDto
 	): Promise<Item> {
-		return await this.itemModel
-			.findByIdAndUpdate(itemId, {
-				itemName: updateItemDto.itemName,
-				itemTotalSize: updateItemDto.itemTotalSize,
-				updatedAt: Date.now().toString(),
-			})
-			.exec();
+		return await this.itemModel.findByIdAndUpdate(
+			itemId,
+			{
+				$set: {
+					item_name: updateItemDto.item_name,
+					item_total_size: updateItemDto.item_total_size,
+					updated_at: Date.now().toString(),
+				},
+			},
+			{ new: true }
+		);
 	}
 
 	async deleteItemById(itemId: string): Promise<void> {

@@ -26,11 +26,6 @@ export class ItemController {
 		return this.itemService.getItemById(itemId);
 	}
 
-	@Get()
-	async getItem(): Promise<string> {
-		return 'test cors';
-	}
-
 	@Put(':itemId')
 	async updateItemById(
 		@Param('itemId') itemId: string,

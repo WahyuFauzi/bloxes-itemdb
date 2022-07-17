@@ -9,16 +9,16 @@ export class Item {
 	_id: string;
 
 	@Prop({ required: true })
-	itemName: string;
+	item_name: string;
 
 	@Prop({ required: true })
-	itemTotalSize: number;
+	item_total_size: number;
 
 	@Prop({ required: true })
-	createdAt: string;
+	created_at: string;
 
 	@Prop({ required: true })
-	updatedAt: string;
+	updated_at: string;
 }
 
 export const ItemSchema = SchemaFactory.createForClass(Item);

@@ -1,5 +1,3 @@
 export class CreateFolderDto {
-	folderName: string;
-	nestedFolders: string[];
-	items: string[];
+	folder_name: string;
 }

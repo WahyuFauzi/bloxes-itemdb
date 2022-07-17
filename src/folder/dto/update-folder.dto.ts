@@ -1,5 +1,5 @@
 export class UpdateFolderDto {
-	folderName: string;
-	nestedFolders: string[];
+	folder_name: string;
+	nested_folders: string[];
 	items: string[];
 }

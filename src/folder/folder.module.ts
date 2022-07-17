@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ItemModule } from '../item/item.module';
 import { FolderController } from './folder.controller';
@@ -14,6 +14,6 @@ import { Folder, FolderSchema } from './schemas/folder.schema';
 		ItemModule,
 	],
 	controllers: [FolderController],
-	providers: [FolderService],
+	providers: [FolderService, Logger],
 })
 export class FolderModule {}
