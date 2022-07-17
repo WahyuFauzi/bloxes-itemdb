@@ -6,7 +6,6 @@ import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 import { Item, ItemDocument } from './schemas/item.schema';
 
-//TODO repair updated at and created at with standarized date (ISO)
 @Injectable()
 export class ItemService {
 	constructor(
