@@ -4,7 +4,7 @@ this backen use nestjs framework with express as a core and mongodb as a databas
 
 please run this backend first before you run the frontend app
 
-you can get the frontend app here: `https://github.com/WahyuFauzi/bloxes-windows`
+you can get the frontend app here: `https://github.com/WahyuFauzi/bloxes-fm`
 
 ### Mongoose sample
 

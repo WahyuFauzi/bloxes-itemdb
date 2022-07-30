@@ -13,7 +13,7 @@ import { UpdateFolderDto } from './dto/update-folder.dto';
 import { FolderService } from './folder.service';
 import { Folder } from './schemas/folder.schema';
 
-@Controller('folder')
+@Controller('api/v1/folder')
 export class FolderController {
 	constructor(private readonly folderService: FolderService) {}
 

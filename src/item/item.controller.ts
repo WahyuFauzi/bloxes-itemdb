@@ -12,7 +12,7 @@ import { UpdateItemDto } from './dto/update-item.dto';
 import { ItemService } from './item.service';
 import { Item } from './schemas/item.schema';
 
-@Controller('item')
+@Controller('api/v1/item')
 export class ItemController {
 	constructor(private readonly itemService: ItemService) {}
 
